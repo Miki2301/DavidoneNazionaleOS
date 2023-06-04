@@ -355,6 +355,16 @@ int sys_close_LAB05(int fd) {
 We already implemented `read()` and `write()` system calls in LAB02, but the only supported the reading and writing from `STDIN`, `STDOUT` and `STDERR`. It is time to expand them.
 
 First of all, we will implement them once by exploiting the **kernel buffer** and once not.
+For reference:
+struct uio {
+	struct iovec     *uio_iov;	/* Data blocks */
+	unsigned          uio_iovcnt;	/* Number of iovecs */
+	off_t             uio_offset;	/* Desired offset into object */
+	size_t            uio_resid;	/* Remaining amt of data to xfer */
+	enum uio_seg      uio_segflg;	/* What kind of pointer we have */
+	enum uio_rw       uio_rw;	/* Whether op is a read or write */
+	struct addrspace *uio_space;	/* Address space for user pointer */
+};
 
 1. **Exploiting kernel buffer**
     ```C
@@ -396,9 +406,9 @@ First of all, we will implement them once by exploiting the **kernel buffer** an
             return result;
         }
 
-        of->offset = ku.uio_offset;
-        nread = size - ku.uio_resid;
-        copyout(kbuf, buf_ptr, nread);
+        of->offset = ku.uio_offset; //update the offset
+        nread = size - ku.uio_resid; //remaining bytes to read, it was set to size in the uio_kinit
+        copyout(kbuf, buf_ptr, nread); //copying bytes from kmemory to umemory (it calls the load_segment inside)
         kfree(kbuf);
 
         return (nread);
