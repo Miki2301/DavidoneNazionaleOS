@@ -503,7 +503,7 @@ On the other hand:
         u.uio_offset = of->offset;
         u.uio_segflg = UIO_USERISPACE;
         u.uio_rw = UIO_READ;
-        u.uio_space = curproc->p_addrspace;
+        u.uio_space = curproc->p_addrspace; //required only with user buffer due to address space translation
 
         result = VOP_READ(vn, &u);
         if (result) {
