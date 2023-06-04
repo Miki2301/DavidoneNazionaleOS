@@ -353,9 +353,9 @@ int sys_close_LAB05(int fd) {
 
 ### read system call and write system call
 We already implemented `read()` and `write()` system calls in LAB02, but the only supported the reading and writing from `STDIN`, `STDOUT` and `STDERR`. It is time to expand them.
-
 First of all, we will implement them once by exploiting the **kernel buffer** and once not.
 For reference:
+```C
 struct uio {
 	struct iovec     *uio_iov;	/* Data blocks */
 	unsigned          uio_iovcnt;	/* Number of iovecs */
@@ -365,7 +365,7 @@ struct uio {
 	enum uio_rw       uio_rw;	/* Whether op is a read or write */
 	struct addrspace *uio_space;	/* Address space for user pointer */
 };
-
+```
 1. **Exploiting kernel buffer**
     ```C
     #if USE_KERNEL_BUFFER
