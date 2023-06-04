@@ -357,7 +357,7 @@ void sys_exit_LAB02(int status) {
     /* acquiring the current process information from current.h */
     struct proc *proc = curproc;
     proc->p_status = status & 0xff;    /* return status is represented by the lower 8 bits */
-    // proc_remthread(curthread);                  /* remove thread from current process */
+    proc_remthread(curthread);                  /* remove thread from current process */
     
 #if IMPLEMENTED_WAIT_WITH_SEMAPHORES
     V(proc->p_sem);  /* adding a resource to the semaphore */
