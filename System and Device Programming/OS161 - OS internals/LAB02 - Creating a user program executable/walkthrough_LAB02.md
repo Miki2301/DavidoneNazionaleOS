@@ -292,6 +292,7 @@ static void menu_execute(char *line, int isargs) {
 	Once the right entry is found, the dispatcher calls the `cmdtable[].func` with the necessary argument (received formatted by the `menu_execute()`).
 
 	```C
+	{
 	static struct {
 	const char *name;
 	int (*func)(int nargs, char **args);
@@ -323,6 +324,7 @@ static void menu_execute(char *line, int isargs) {
 	{ NULL, NULL }
 };
 	result = cmdtable[i].func(nargs, args);
+	}
 	```
 4. `cmd_prog()` removed the leading `p` from the command passed and calls `common_prog()`.
 ```C
