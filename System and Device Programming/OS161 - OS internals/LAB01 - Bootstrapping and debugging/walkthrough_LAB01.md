@@ -167,9 +167,15 @@ In order to do so, based on the fact that you are using `VSCode` or not:
     
     - Without `VSCode`: run the command (less obv, inside `os161/os161-base-2.0.3/kern/compile/NEW_COOL_VERSION`): 
         ```
+        cd .../kern/conf
+        *create the configuration file*
+        ./config NAME_OF_THE_CONF_FILE
+        cd .../kern/compile/NAME_OF_THE_CONF_FOLDER
         bmake depend
         bmake
         bmake install
+        cd os161/root
+        sys161 -w kernel
         ```
  
 4. **Run the new operating system** 
