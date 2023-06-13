@@ -716,3 +716,10 @@ static void freeppages(paddr_t paddr, unsigned long size) {
 
 ## Conclusions
 The bitmap improves the memory management of the *os161* operating system. It is important to understand that this is a simplified solution. The *optional* tasks provide support for more complicated solutions.
+
+## additional notes
+This problem is a kernel level problem, under the logic/physical conversion. We have in order:
+creating address space with logical/physical conversion
+physical allocation with kfree/kmalloc functionalities using a bitmap.
+
+Also the second point can be used to allocated kernel level structures. In this case we don't need an address space but only a subtraction between the index and a register MGS_0
