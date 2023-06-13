@@ -319,66 +319,7 @@ static void menu_execute(char *line, int isargs) {
 	{ "q",		cmd_quit },
 	{ "exit",	cmd_quit },
 	{ "halt",	cmd_quit },
-
-	/* stats */
-	{ "kh",         cmd_kheapstats },
-	{ "khgen",      cmd_kheapgeneration },
-	{ "khdump",     cmd_kheapdump },
-
-	/* base system tests */
-	{ "at",		arraytest },
-	{ "at2",	arraytest2 },
-	{ "bt",		bitmaptest },
-	{ "tlt",	threadlisttest },
-	{ "km1",	kmalloctest },
-	{ "km2",	kmallocstress },
-	{ "km3",	kmalloctest3 },
-	{ "km4",	kmalloctest4 },
-#if OPT_NET
-	{ "net",	nettest },
-#endif
-	{ "tt1",	threadtest },
-	{ "tt2",	threadtest2 },
-	{ "tt3",	threadtest3 },
-	{ "sy1",	semtest },
-
-	/* synchronization assignment tests */
-	{ "sy2",	locktest },
-	{ "sy3",	cvtest },
-	{ "sy4",	cvtest2 },
-
-	/* semaphore unit tests */
-	{ "semu1",	semu1 },
-	{ "semu2",	semu2 },
-	{ "semu3",	semu3 },
-	{ "semu4",	semu4 },
-	{ "semu5",	semu5 },
-	{ "semu6",	semu6 },
-	{ "semu7",	semu7 },
-	{ "semu8",	semu8 },
-	{ "semu9",	semu9 },
-	{ "semu10",	semu10 },
-	{ "semu11",	semu11 },
-	{ "semu12",	semu12 },
-	{ "semu13",	semu13 },
-	{ "semu14",	semu14 },
-	{ "semu15",	semu15 },
-	{ "semu16",	semu16 },
-	{ "semu17",	semu17 },
-	{ "semu18",	semu18 },
-	{ "semu19",	semu19 },
-	{ "semu20",	semu20 },
-	{ "semu21",	semu21 },
-	{ "semu22",	semu22 },
-
-	/* file system assignment tests */
-	{ "fs1",	fstest },
-	{ "fs2",	readstress },
-	{ "fs3",	writestress },
-	{ "fs4",	writestress2 },
-	{ "fs5",	longstress },
-	{ "fs6",	createstress },
-
+	....
 	{ NULL, NULL }
 };
 	result = cmdtable[i].func(nargs, args);
